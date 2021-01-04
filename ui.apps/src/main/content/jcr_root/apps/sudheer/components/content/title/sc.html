@@ -1,0 +1,30 @@
+<sly data-sly-use.backgroundContainer="com.sud.aem.core.models.SectionContainerModel" 
+     data-sly-use.templates="core/wcm/components/commons/v1/templates.html">
+    <div class="container" id="${backgroundContainer.id}">
+        <sly data-sly-test="${backgroundContainer.isBGColor}" >${backgroundContainer.bgColor @context='uri'}
+            <div class="card-color-container d-block mx-auto"  style="background-color: ${backgroundContainer.bgColor @context='uri'}">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12">TEST<br></br><br></br><br></br><br></br><br></br><br></br>TEST123
+                        	<sly data-sly-resource="${'responsivegrid' @ resourceType = 'wcm/foundation/components/responsivegrid'}"></sly>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </sly>
+        <sly data-sly-test="${!backgroundContainer.isBGColor}" >
+            <div class="cmp-card-container">
+		      <div class="card-img-container d-block mx-auto" style="background-image:url(${backgroundContainer.bgImage @ context='uri' })">
+		         <div class="container">
+		            <div class="row">
+		               <div class="col-12">
+		                  <sly data-sly-resource="${'responsivegrid' @ resourceType = 'wcm/foundation/components/responsivegrid'}"></sly>
+		               </div>
+		            </div>
+		         </div>
+		      </div>
+		   </div>
+        </sly>
+    </div>
+   <sly data-sly-call="${templates.placeholder @ isEmpty = !backgroundContainer.backgroundStyle}"></sly>
+</sly>
